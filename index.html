@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar" id="navbar">
+    <div class="logo">
+        <span>FMS</span> Feedback Management
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <button onclick="showPage('homePage')">Home</button>
+        <button onclick="showPage('aboutPage')">About</button>
+        <button onclick="showPage('loginPage')" id="loginNavBtn">Login</button>
+        <button onclick="showPage('registerPage')" id="registerNavBtn">Register</button>
+        <button onclick="logout()" id="logoutBtn" class="hidden">Logout</button>
+    </div>
+</nav>
+
+
+<!-- ================= HOME PAGE ================= -->
+
+<section id="homePage" class="page">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <h1>Feedback Management System</h1>
+
+            <p>
+                A simple and efficient platform for collecting,
+                managing and resolving user feedback.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="primary-btn" onclick="showPage('loginPage')">
+                    Login
+                </button>
+
+                <button class="secondary-btn" onclick="showPage('registerPage')">
+                    Create Account
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Submit Feedback</h3>
+            <p>
+                Users can easily submit suggestions,
+                complaints and compliments.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Track Feedback</h3>
+            <p>
+                Track feedback status from submission
+                to resolution.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3>Admin Management</h3>
+            <p>
+                Administrators can manage feedback,
+                users and responses.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT PAGE ================= -->
+
+<section id="aboutPage" class="page hidden">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>About the System</h2>
+            <p>Feedback Management System</p>
+        </div>
+
+        <div class="about-card">
+
+            <h3>Project Objective</h3>
+
+            <p>
+                The Feedback Management System is designed to collect,
+                organize and manage feedback from users.
+                The system provides separate functionality for users
+                and administrators.
+            </p>
+
+            <h3>Technologies Used</h3>
+
+            <div class="technology-list">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>LocalStorage</span>
+                <span>VS Code</span>
+                <span>Live Server</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LOGIN PAGE ================= -->
+
+<section id="loginPage" class="page hidden">
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+                <h2>Login</h2>
+                <p>Access your Feedback Management account</p>
+            </div>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="primary-btn full-btn">
+                    Login
+                </button>
+
+            </form>
+
+
+            <div class="demo-login">
+
+                <p><strong>Admin Demo</strong></p>
+
+                <p>Email: admin@fms.com</p>
+
+                <p>Password: admin123</p>
+
+            </div>
+
+
+            <p class="auth-bottom">
+                Don't have an account?
+                <button onclick="showPage('registerPage')">
+                    Register
+                </button>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REGISTER PAGE ================= -->
+
+<section id="registerPage" class="page hidden">
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+
+                <h2>Create Account</h2>
+
+                <p>Register as a user</p>
+
+            </div>
+
+
+            <form id="registerForm">
+
+                <div class="form-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="registerName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Mobile Number</label>
+
+                    <input
+                        type="tel"
+                        id="registerPhone"
+                        placeholder="Enter 10 digit mobile number"
+                        pattern="[6-9][0-9]{9}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Minimum 6 characters"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Confirm Password</label>
+
+                    <input
+                        type="password"
+                        id="registerConfirmPassword"
+                        placeholder="Confirm password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="primary-btn full-btn">
+                    Register
+                </button>
+
+            </form>
+
+
+            <p class="auth-bottom">
+
+                Already have an account?
+
+                <button onclick="showPage('loginPage')">
+                    Login
+                </button>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= USER DASHBOARD ================= -->
+
+<section id="userDashboard" class="page hidden">
+
+    <div class="dashboard-container">
+
+        <div class="dashboard-header">
+
+            <div>
+                <h1>User Dashboard</h1>
+                <p id="welcomeUser"></p>
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="showPage('submitFeedbackPage')"
+            >
+                + Submit Feedback
+            </button>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <h3 id="userTotalFeedback">0</h3>
+                <p>Total Feedback</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="userPendingFeedback">0</h3>
+                <p>Pending</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="userResolvedFeedback">0</h3>
+                <p>Resolved</p>
+            </div>
+
+        </div>
+
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <h2>My Feedback</h2>
+
+                <button
+                    class="secondary-btn"
+                    onclick="showPage('submitFeedbackPage')"
+                >
+                    Submit New
+                </button>
+
+            </div>
+
+            <div id="userFeedbackTable"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SUBMIT FEEDBACK ================= -->
+
+<section id="submitFeedbackPage" class="page hidden">
+
+    <div class="form-container">
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Submit Feedback</h2>
+                    <p>Share your feedback with the administration.</p>
+                </div>
+
+            </div>
+
+
+            <form id="feedbackForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>Category</label>
+
+                        <select id="feedbackCategory" required>
+
+                            <option value="">Select Category</option>
+                            <option value="Complaint">Complaint</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Service">Service</option>
+                            <option value="Website">Website</option>
+                            <option value="Infrastructure">Infrastructure</option>
+                            <option value="Other">Other</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Priority</label>
+
+                        <select id="feedbackPriority" required>
+
+                            <option value="">Select Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Subject</label>
+
+                    <input
+                        type="text"
+                        id="feedbackSubject"
+                        placeholder="Enter feedback subject"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Feedback Description</label>
+
+                    <textarea
+                        id="feedbackDescription"
+                        rows="7"
+                        placeholder="Describe your feedback..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="showPage('userDashboard')"
+                    >
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-btn">
+                        Submit Feedback
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<section id="adminDashboard" class="page hidden">
+
+    <div class="dashboard-container">
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h1>Admin Dashboard</h1>
+
+                <p>
+                    Manage users and feedback
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <h3 id="adminTotalFeedback">0</h3>
+                <p>Total Feedback</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="adminPendingFeedback">0</h3>
+                <p>Pending</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="adminProgressFeedback">0</h3>
+                <p>In Progress</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="adminResolvedFeedback">0</h3>
+                <p>Resolved</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="adminTotalUsers">0</h3>
+                <p>Registered Users</p>
+            </div>
+
+        </div>
+
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <h2>Feedback Management</h2>
+
+                <div class="filter-area">
+
+                    <input
+                        type="text"
+                        id="adminSearch"
+                        placeholder="Search feedback..."
+                        oninput="renderAdminFeedback()"
+                    >
+
+                    <select
+                        id="adminStatusFilter"
+                        onchange="renderAdminFeedback()"
+                    >
+
+                        <option value="All">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                        <option value="Rejected">Rejected</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div id="adminFeedbackTable"></div>
+
+        </div>
+
+
+        <div class="content-card">
+
+            <div class="card-header">
+
+                <h2>Registered Users</h2>
+
+            </div>
+
+            <div id="adminUsersTable"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEEDBACK DETAILS MODAL ================= -->
+
+<div id="feedbackModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Feedback Details</h2>
+
+            <button onclick="closeModal()">×</button>
+
+        </div>
+
+        <div id="feedbackDetails"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
